@@ -19,14 +19,22 @@ dag = DAG(
 
 with dag:
 
+    # Drop the pollution db if it already exists
     t1 = PostgresOperator(
+        task_id="drop_db",
+        sql="DROP DATABASE IF EXISTS pollution;",
+        postgres_conn_id="postgres_main",
+        autocommit=True
+    )
+
+    t2 = PostgresOperator(
         task_id="create_db", 
         sql="CREATE DATABASE pollution;", 
         postgres_conn_id="postgres_main", 
         autocommit=True
     )
 
-    t2 = PostgresOperator(
+    t3 = PostgresOperator(
         task_id="create_tables",
         sql="tables.sql",
         postgres_conn_id="postgres_main",
@@ -34,4 +42,4 @@ with dag:
         autocommit=True
     )
 
-    t1 >> t2
+    t1 >> t2 >> t3
