@@ -27,6 +27,7 @@ with dag:
         autocommit=True
     )
 
+    # Create the database
     t2 = PostgresOperator(
         task_id="create_db", 
         sql="CREATE DATABASE pollution;", 
@@ -34,6 +35,7 @@ with dag:
         autocommit=True
     )
 
+    # Create table(s) for the pollution db.
     t3 = PostgresOperator(
         task_id="create_tables",
         sql="tables.sql",
