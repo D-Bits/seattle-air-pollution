@@ -4,6 +4,7 @@ CREATE TABLE pollution
     id SERIAL PRIMARY KEY,
     "date" DATE NOT NULL,
     aqi DECIMAL NOT NULL,
+    dominantpol VARCHAR(10) NOT NULL,
     co DECIMAL NOT NULL,
     no2 DECIMAL NOT NULL,
     o3 DECIMAL NOT NULL,
