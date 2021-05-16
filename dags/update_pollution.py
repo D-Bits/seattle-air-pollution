@@ -32,7 +32,9 @@ def update_pollution():
         df = pd.DataFrame(data["list"])
         # Extract, and normalize, the values from the "components" key
         comps = pd.json_normalize(dict(df['components'][0]))
-        
+        # Extract the Air Quality Index
+        aqi = pd.json_normalize(df['main'][0])
+
 
     extract = extract()
     transform = transform(extract)
