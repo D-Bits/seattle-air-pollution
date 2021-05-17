@@ -28,12 +28,18 @@ def update_pollution():
     @task()
     def transform(data):
 
-        # Load JSON stored in the "list" key into DataFrame
+        # Load the key-values from the "list" key into a DataFrame
         df = pd.DataFrame(data["list"])
-        # Extract, and normalize, the values from the "components" key
-        comps = pd.json_normalize(dict(df['components'][0]))
-        # Extract the Air Quality Index
+        # Extract the components values
+        comps = pd.json_normalize(df['components'][0])
+        # Extract the air quality index (AQI) value
         aqi = pd.json_normalize(df['main'][0])
+        # Store the temporary dfs in a list
+        dfs = [aqi, comps]
+        # Combine the two DataFrames into a single df
+        merged_df = pd.concat(dfs, axis=1)
+
+        return merged_df
 
 
     extract = extract()
