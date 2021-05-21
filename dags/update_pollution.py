@@ -57,7 +57,9 @@ def update_pollution():
 
         df = pd.read_json(cleaned_data)
         # Convert the UNIX timestamps to datetimes
-        df["dates"] = pd.to_datetime(df["dates"])
+        df['dates'] = pd.to_datetime(df['dates'] / 1000, unit="s")
+
+
         df.to_sql(
             "pollution", 
             db_engine, 
@@ -65,7 +67,7 @@ def update_pollution():
             index=False, 
             if_exists="append"
         )
-
+        
 
     extract = extract()
     transform = transform(extract)
