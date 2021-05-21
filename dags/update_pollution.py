@@ -46,7 +46,7 @@ def update_pollution():
         aqi = pd.json_normalize(df['main'][0])
         # Store the temporary dfs in a list
         dfs = [df["dates"], aqi, comps]
-        # Combine the two DataFrames into a single df
+        # Combine the DataFrames list into a single df
         merged_df = pd.concat(dfs, axis=1)
         json_df = merged_df.to_json(orient="records")
 
