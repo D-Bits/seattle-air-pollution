@@ -59,7 +59,7 @@ def update_pollution():
         # Convert the UNIX timestamps to datetimes
         df['dates'] = pd.to_datetime(df['dates'] / 1000, unit="s")
 
-
+        # Write the cleaned data to the db schema
         df.to_sql(
             "pollution", 
             db_engine, 
