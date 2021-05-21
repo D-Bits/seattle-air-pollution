@@ -2,7 +2,8 @@
 CREATE TABLE pollution
 (
     id SERIAL PRIMARY KEY,
-    dates DATETIME NOT NULL,
+    dates TIMESTAMP NOT NULL,
+    -- Air quality index
     aqi DECIMAL NOT NULL,
     co DECIMAL NOT NULL,
     "no" DECIMAL NOT NULL,
@@ -10,5 +11,7 @@ CREATE TABLE pollution
     o3 DECIMAL NOT NULL,
     pm2_5 DECIMAL NOT NULL,
     pm10 DECIMAL NOT NULL,
-    so2 DECIMAL NOT NULL
+    so2 DECIMAL NOT NULL,
+    -- Ammonia
+    nh3 DECIMAL NOT NULL
 );
