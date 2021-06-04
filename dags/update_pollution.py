@@ -1,15 +1,9 @@
 from airflow.decorators import dag, task
 from datetime import datetime
-from settings import lat, lon, api_key, db_engine
+from settings import lat, lon, api_key, db_engine, default_args
 import requests
 import pandas as pd
 
-
-default_args = {
-    "owner": "airflow",
-    "start_date": datetime(2021, 5, 18),
-    "retries": 1
-}
 
 # Run DAG every hour starting at 01:00
 @dag(default_args=default_args, schedule_interval="@hourly")
