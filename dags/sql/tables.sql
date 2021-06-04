@@ -15,3 +15,15 @@ CREATE TABLE pollution
     -- Ammonia
     nh3 DECIMAL NOT NULL
 );
+
+CREATE TABLE solar_radiation
+(
+    id SERIAL PRIMARY KEY,
+    dates TIMESTAMP NOT NULL,
+    ghi DECIMAL NOT NULL,
+    dni DECIMAL NOT NULL,
+    dhi DECIMAL NOT NULL,
+    ghi_cs DECIMAL NOT NULL,
+    dni_cs DECIMAL NOT NULL,
+    dhi_cs DECIMAL NOT NULL
+);
