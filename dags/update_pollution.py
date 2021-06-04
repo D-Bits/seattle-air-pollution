@@ -1,7 +1,6 @@
 from airflow.decorators import dag, task
 from datetime import datetime
-from sqlalchemy import create_engine
-from settings import lat, lon, api_key
+from settings import lat, lon, api_key, db_engine
 import requests, os 
 import pandas as pd
 
