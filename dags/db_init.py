@@ -22,7 +22,7 @@ with dag:
     # Drop the pollution db if it already exists
     t1 = PostgresOperator(
         task_id="drop_db",
-        sql="DROP DATABASE IF EXISTS pollution;",
+        sql="DROP DATABASE IF EXISTS climate;",
         postgres_conn_id="postgres_main",
         autocommit=True
     )
@@ -30,7 +30,7 @@ with dag:
     # Create the database
     t2 = PostgresOperator(
         task_id="create_db", 
-        sql="CREATE DATABASE pollution;", 
+        sql="CREATE DATABASE climate;", 
         postgres_conn_id="postgres_main", 
         autocommit=True
     )
@@ -40,7 +40,7 @@ with dag:
         task_id="create_tables",
         sql="tables.sql",
         postgres_conn_id="postgres_main",
-        database="pollution",
+        database="climate",
         autocommit=True
     )
 
