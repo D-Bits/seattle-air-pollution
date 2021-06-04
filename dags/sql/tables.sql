@@ -20,9 +20,13 @@ CREATE TABLE solar_radiation
 (
     id SERIAL PRIMARY KEY,
     dates TIMESTAMP NOT NULL,
+    -- cloudy global horizontal irradiance
     ghi DECIMAL NOT NULL,
+    -- cloudy direct normal irradiance
     dni DECIMAL NOT NULL,
+    -- cloudy diffuse horizontal irradiance
     dhi DECIMAL NOT NULL,
+    -- clear sky irradiance values
     ghi_cs DECIMAL NOT NULL,
     dni_cs DECIMAL NOT NULL,
     dhi_cs DECIMAL NOT NULL
