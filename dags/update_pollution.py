@@ -1,6 +1,7 @@
 from airflow.decorators import dag, task
 from datetime import datetime
 from sqlalchemy import create_engine
+from settings import lat, lon, api_key
 import requests, os 
 import pandas as pd
 
@@ -10,15 +11,6 @@ default_args = {
     "start_date": datetime(2021, 5, 18),
     "retries": 1
 }
-
-# Get the API token from an environment variable 
-api_key = os.getenv("API_KEY")
-# Set latitude and longitude for Seattle
-lat = 47.6062
-lon = -122.3321
-
-# Create SQL Alchemy engine for loading data
-db_engine = create_engine(os.getenv("DB_CONN"))
 
 # Run DAG every hour starting at 01:00
 @dag(default_args=default_args, schedule_interval="@hourly")
