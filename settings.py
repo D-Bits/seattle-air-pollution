@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 import os 
 
 
-# Settings to be used across DAGs
+### Settings to be used across DAGs ###
 
 # Get the API token from an environment variable 
 api_key = os.getenv("API_KEY")
