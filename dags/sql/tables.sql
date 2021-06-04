@@ -8,6 +8,7 @@ CREATE TABLE pollution
     co DECIMAL NOT NULL,
     "no" DECIMAL NOT NULL,
     no2 DECIMAL NOT NULL,
+    -- Ozone
     o3 DECIMAL NOT NULL,
     pm2_5 DECIMAL NOT NULL,
     pm10 DECIMAL NOT NULL,
