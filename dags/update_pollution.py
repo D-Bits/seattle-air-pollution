@@ -1,8 +1,15 @@
 from airflow.decorators import dag, task
-from settings import lat, lon, api_key, db_engine, default_args
+from datetime import datetime
+from settings import lat, lon, api_key, db_engine
 import requests
 import pandas as pd
 
+
+default_args = {
+    "owner": "airflow",
+    "start_date": datetime(2021, 5, 18),
+    "retries": 1
+}
 
 # Run DAG every hour starting at 01:00
 @dag(default_args=default_args, schedule_interval="@hourly")
@@ -32,7 +39,9 @@ def update_pollution():
         dfs = [df["dates"], aqi, comps]
         # Combine the DataFrames list into a single df
         merged_df = pd.concat(dfs, axis=1)
-        json_df = merged_df.to_json(orient="records")
+        # Get only the most recent record
+        current_df = merged_df.head(n=1)
+        json_df = current_df.to_json(orient="records")
 
         return json_df
 
