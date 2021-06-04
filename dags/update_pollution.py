@@ -1,5 +1,4 @@
 from airflow.decorators import dag, task
-from datetime import datetime
 from settings import lat, lon, api_key, db_engine, default_args
 import requests
 import pandas as pd
