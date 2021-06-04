@@ -12,7 +12,8 @@ lat = 47.6062
 lon = -122.3321
 
 # Create SQL Alchemy engine for loading data
-db_engine = create_engine(os.getenv("DB_CONN"))
+db_conn = os.getenv("DB_CONN")
+db_engine = create_engine(db_conn)
 
 default_args = {
     "owner": "airflow",
