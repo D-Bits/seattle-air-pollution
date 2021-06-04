@@ -2,6 +2,8 @@ from airflow import DAG
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from datetime import datetime
 
+from sqlalchemy.sql.expression import true
+
 
 default_args = {
     "owner": "airflow",
@@ -44,4 +46,12 @@ with dag:
         autocommit=True
     )
 
-    t1 >> t2 >> t3
+    t4 = PostgresOperator(
+        task_id="create_views",
+        sql="views.sql",
+        postgres_conn_id="postgres_main",
+        database="climate",
+        autocommit=True
+    )
+
+    t1 >> t2 >> t3 >> t4
