@@ -6,7 +6,7 @@ import os
 ### Settings to be used across DAGs ###
 
 # Get the API token from an environment variable 
-api_key = os.getenv("API_KEY")
+open_weathermap_key = os.getenv("OPEN_WEATHER_MAP_KEY")
 # Set latitude and longitude for Seattle
 lat = 47.6062
 lon = -122.3321

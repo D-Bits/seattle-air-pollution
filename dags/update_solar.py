@@ -1,6 +1,6 @@
 # DAG to update data for solar radiation
 from airflow.decorators import dag, task
-from settings import lat, lon, api_key, db_engine, default_args
+from settings import lat, lon, open_weathermap_key, db_engine, default_args
 import requests
 import pandas as pd
 
@@ -12,7 +12,7 @@ def update_solar():
     @task()
     def extract():
 
-        url = f"http://api.openweathermap.org/data/2.5/solar_radiation/forecast?lat={lat}&lon={lon}&appid={api_key}"
+        url = f"http://api.openweathermap.org/data/2.5/solar_radiation/forecast?lat={lat}&lon={lon}&appid={open_weathermap_key}"
         res = requests.get(url)
         json_data = res.json()
 

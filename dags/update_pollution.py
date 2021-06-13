@@ -1,6 +1,6 @@
 from airflow.decorators import dag, task
 from datetime import datetime
-from settings import lat, lon, api_key, db_engine
+from settings import lat, lon, open_weathermap_key, db_engine
 import requests
 import pandas as pd
 
@@ -19,7 +19,7 @@ def update_pollution():
     @task()
     def extract():
 
-        req = requests.get(f"https://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={api_key}")
+        req = requests.get(f"https://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={open_weathermap_key}")
         json_data = req.json()
         
         return json_data
