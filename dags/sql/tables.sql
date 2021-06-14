@@ -39,11 +39,11 @@ CREATE TABLE atmospheric
     id SERIAL PRIMARY KEY,
     dates TIMESTAMP NOT NULL,
     -- In mm
-    precipitation DECIMAL NOT NULL,
+    precip_mm DECIMAL NOT NULL,
     -- Percentage of cloud coverage
-    cloud_coverage DECIMAL NOT NULL,
+    cloud DECIMAL NOT NULL,
     -- In kph
-    winds DECIMAL NOT NULL,
+    wind_kph DECIMAL NOT NULL,
     -- In km
-    visibility DECIMAL NOT NULL
+    vis_km DECIMAL NOT NULL
 );
