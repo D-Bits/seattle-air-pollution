@@ -37,7 +37,7 @@ CREATE TABLE solar_radiation
 CREATE TABLE atmospheric
 (
     id SERIAL PRIMARY KEY,
-    dates TIMESTAMP NOT NULL,
+    last_updated TIMESTAMP NOT NULL,
     -- In mm
     precip_mm DECIMAL NOT NULL,
     -- Percentage of cloud coverage
