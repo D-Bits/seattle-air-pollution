@@ -57,4 +57,4 @@ def update_solar():
     load = load(transform)
 
 
-update_solar_dg = update_solar()
+update_solar_dag = update_solar()
