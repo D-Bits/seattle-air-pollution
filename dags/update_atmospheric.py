@@ -25,7 +25,7 @@ def update_atmospheric():
         # Drop unnessecary fields
         cleaned_df = df.drop([
             'last_updated_epoch', 
-            'temp_c',
+            'temp_f',
             'is_day',
             'condition',
             'wind_mph',
