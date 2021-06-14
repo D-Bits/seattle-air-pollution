@@ -32,3 +32,18 @@ CREATE TABLE solar_radiation
     dni_cs DECIMAL NOT NULL,
     dhi_cs DECIMAL NOT NULL
 );
+
+-- Table for atmospheric data (rainfall, humidity, etc)
+CREATE TABLE atmospheric
+(
+    id SERIAL PRIMARY KEY,
+    dates TIMESTAMP NOT NULL,
+    -- In mm
+    precipitation DECIMAL NOT NULL,
+    -- Percentage of cloud coverage
+    cloud_coverage DECIMAL NOT NULL,
+    -- In kph
+    winds DECIMAL NOT NULL,
+    -- In km
+    visibility DECIMAL NOT NULL
+);
