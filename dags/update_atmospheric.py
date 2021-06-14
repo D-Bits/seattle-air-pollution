@@ -34,14 +34,18 @@ def update_atmospheric():
             'pressure_in',
             'precip_in',
             'feelslike_f',
+            'feelslike_c',
             'vis_miles',
             'uv',
             'gust_mph',
             'gust_kph',
             'air_quality'
         ], axis=1)
+
+        # Extract only the most recent record
+        current = cleaned_df.head(n=1)
         # Cast the df to a JSON array
-        cleaned_json = cleaned_df.to_json(orient="records")
+        cleaned_json = current.to_json(orient="records")
 
         return cleaned_json
 
