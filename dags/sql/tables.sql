@@ -38,6 +38,8 @@ CREATE TABLE atmospheric
 (
     id SERIAL PRIMARY KEY,
     last_updated TIMESTAMP NOT NULL,
+    -- temperature in celsius
+    temp_c DECIMAL NOT NULL,
     -- In mm
     precip_mm DECIMAL NOT NULL,
     -- Percentage of cloud coverage
