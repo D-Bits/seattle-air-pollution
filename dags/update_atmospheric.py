@@ -7,7 +7,7 @@ import requests
 
 
 @dag(default_args=default_args, schedule_interval="@hourly")
-def update_rainfall():
+def update_atmospheric():
 
     # Extract data from API endpoint
     @task()
@@ -21,4 +21,46 @@ def update_rainfall():
     @task()
     def transform(data):
 
-        pass
+        df = pd.DataFrame(data['current'])
+        # Drop unnessecary fields
+        cleaned_df = df.drop([
+            'last_updated_epoch', 
+            'temp_c',
+            'is_day',
+            'condition',
+            'wind_mph',
+            'wind_degree',
+            'wind_dir',
+            'pressure_in',
+            'precip_in',
+            'feelslike_f',
+            'vis_miles',
+            'uv',
+            'gust_mph',
+            'gust_kph',
+            'air_quality'
+        ], axis=1)
+        # Cast the df to a JSON array
+        cleaned_json = cleaned_df.to_json(orient="records")
+
+        return cleaned_json
+
+    @task()
+    def load(cleaned_data):
+
+        df = pd.read_json(cleaned_data, orient="records")
+        # Write the cleaned data to the db schema
+        df.to_sql(
+            "atmospheric", 
+            db_engine, 
+            method="multi", 
+            index=False, 
+            if_exists="append"
+        )
+
+    extract = extract()
+    transform = transform(extract)
+    load = load(transform)
+
+
+update_atmospheric_dag = update_atmospheric()
