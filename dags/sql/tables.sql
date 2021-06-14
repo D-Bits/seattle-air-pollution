@@ -40,12 +40,15 @@ CREATE TABLE atmospheric
     last_updated TIMESTAMP NOT NULL,
     -- temperature in celsius
     temp_c DECIMAL NOT NULL,
-    -- In mm
-    precip_mm DECIMAL NOT NULL,
-    -- Percentage of cloud coverage
-    cloud DECIMAL NOT NULL,
     -- In kph
     wind_kph DECIMAL NOT NULL,
+    pressure_mb DECIMAL NOT NULL,
+    -- In mm
+    precip_mm DECIMAL NOT NULL,
+    -- Percentage of humidity 
+    humidity INT NOT NULL,
+    -- Percentage of cloud coverage
+    cloud DECIMAL NOT NULL,
     -- In km
     vis_km DECIMAL NOT NULL
 );
