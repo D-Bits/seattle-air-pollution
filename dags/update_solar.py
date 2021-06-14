@@ -42,7 +42,6 @@ def update_solar():
         df = pd.read_json(cleaned_data, orient="records")
         # Convert the UNIX timestamps to datetimes
         df['dates'] = pd.to_datetime(df['dates'] / 1000, unit="s")
-        # Write the df to the schema
         # Write the cleaned data to the db schema
         df.to_sql(
             "solar_radiation", 
