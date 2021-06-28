@@ -17,4 +17,4 @@ ORDER BY precip_mm DESC;
 CREATE VIEW vw_hottest AS 
 SELECT last_updated, temp_c
 FROM public.atmospheric 
-ORDER BY TEMP_C DESC;
+ORDER BY temp_c DESC;
